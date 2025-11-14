@@ -8,7 +8,7 @@ I am building a habit of coding every single day. I am starting small with HTML 
 | :--- | :--- | :--- | :--- |
 | **Day 1** | Nov 12 | Created repo, index.html, and README | ✅ Done |
 | **Day 2** | Nov 13 | Add a list of hobbies (HTML) | ✅ Done |
-| **Day 3** | Nov 14 | Add a link/button (HTML) | ⏳ Pending |
+| **Day 3** | Nov 14 | Add a link and a picture (HTML) | ✅ Done |
 | **Day 4** | Nov 15 | Create style.css & add colors | ⏳ Pending |
 | **Day 5** | Nov 16 | Add borders and spacing | ⏳ Pending |
 | **Day 6** | Nov 17 | Styling shapes (CSS) | ⏳ Pending |
