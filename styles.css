@@ -1,0 +1,53 @@
+:root {
+    /* My Brand Palette */
+    --primary-bg : #fff;          /* White */
+    --primary-text : #333;        /* Dark Gray */
+    --accent-color : limegreen;   /* Limegreen */
+    --secondary-accent : blue;    /* Blue */
+    --heading-color : black;      /* Black */
+}
+
+body {
+    background-color: var(--primary-bg);
+    color: var(--primary-text);
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 20px;
+}
+
+/* The Box Container */
+div.container {
+    max-width: 800px;
+    margin: 0 auto; /* Centers the Box */
+}
+
+h1, h2, h3 {
+    color: var(--heading-color);
+}
+
+/* Profile Image Styling */
+img {
+    border-radius: 50%; /* Makes the image circular */
+    border: 3px solid var(--accent-color); /* Adds a border with accent color */
+}
+
+/* Link Styling */
+a {
+    color: var(--secondary-accent); /* Blue color for links */
+    text-decoration: none;
+    font-weight: bold;
+}
+
+a:hover {
+    color: var(--accent-color); /* Change to limegreen on hover */
+    text-decoration: underline;
+}
+
+/* List Styling */
+ul {
+    list-style-type: square; /* Custom bullet points */
+    border-left: 5px solid var(--accent-color); /*Kight gray background for list */
+    background-color: #f4f4f4; /* Light gray background for list */
+    padding-left: 20px 40px; /* Padding for list */
+}
