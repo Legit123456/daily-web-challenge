@@ -20,6 +20,9 @@ body {
 div.container {
     max-width: 800px;
     margin: 0 auto; /* Centers the Box */
+    padding: 30px; /* Padding inside the Box */
+    border: 2px solid var(--primary-text); /* Border with primary text color */
+    background-color: #fafafa; /* Light background for the Box */
 }
 
 h1, h2, h3 {
