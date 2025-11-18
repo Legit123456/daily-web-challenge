@@ -23,6 +23,8 @@ div.container {
     padding: 30px; /* Padding inside the Box */
     border: 2px solid var(--primary-text); /* Border with primary text color */
     background-color: #fafafa; /* Light background for the Box */
+    border-radius: 15px; /* This ronds the corner */
+    box-shadow: 0px 5px 15px rgba(0,0,0,0.1); /* Subtle shadow for depth */
 }
 
 h1, h2, h3 {
