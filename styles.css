@@ -35,6 +35,12 @@ h1, h2, h3 {
 img {
     border-radius: 50%; /* Makes the image circular */
     border: 3px solid var(--accent-color); /* Adds a border with accent color */
+    transition: transform 0.3s ease; /* Smooth transition for hover effect */
+}
+
+img:hover {
+    transform: scale(1.1); /* Slightly enlarges the image on hover */
+    box-shadow: 0 0 15px var(--accent-color); /* Limegreen Glow effect on hover */
 }
 
 /* Link Styling */
@@ -42,11 +48,13 @@ a {
     color: var(--secondary-accent); /* Blue color for links */
     text-decoration: none;
     font-weight: bold;
+    transition: all 0.3s ease; /* Smooth transition for hover effects */
 }
 
 a:hover {
     color: var(--accent-color); /* Change to limegreen on hover */
     text-decoration: underline;
+    text-shadow: 0 0 10px rgba(50, 205, 50, 0.4); /* Glow effect */
 }
 
 /* List Styling */

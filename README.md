@@ -12,4 +12,4 @@ I am building a habit of coding every single day. I am starting small with HTML 
 | **Day 4** | Nov 15 | Create style.css & add colors | ✅ Done |
 | **Day 5** | Nov 16 | Add borders and spacing | ✅ Done |
 | **Day 6** | Nov 17 | Add border-radius and box-shadow | ✅ Done |
-| **Day 7** | Nov 18 | Hover effects and polish | ⏳ Pending |
+| **Day 7** | Nov 18 | Hover effects and polish | ✅ Done |
