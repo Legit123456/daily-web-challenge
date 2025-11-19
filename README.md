@@ -13,3 +13,10 @@ I am building a habit of coding every single day. I am starting small with HTML 
 | **Day 5** | Nov 16 | Add borders and spacing | ✅ Done |
 | **Day 6** | Nov 17 | Add border-radius and box-shadow | ✅ Done |
 | **Day 7** | Nov 18 | Hover effects and polish | ✅ Done |
+| **Day 8** | Nov 19 | Created Contact Form HTML | ✅ Done |
+| **Day 9** | Nov 20 | Glassmorphism Input Styling | ⏳ Pending |
+| **Day 10** | Nov 21 | Styled Submit Button | ⏳ Pending |
+| **Day 11** | Nov 22 | Intro to Flexbox (Social Icons) | ⏳ Pending |
+| **Day 12** | Nov 23 | Flexbox Alignment | ⏳ Pending |
+| **Day 13** | Nov 24 | Mobile Responsiveness | ⏳ Pending |
+| **Day 14** | Nov 25 | Weekly Test & Refactor | ⏳ Pending |
