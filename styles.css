@@ -64,3 +64,42 @@ ul {
     background-color: #f4f4f4; /* Light gray background for list */
     padding-left: 20px 40px; /* Padding for list */
 }
+
+/* The Form Container */
+.contact-section {
+    margin-top: 40px;
+    padding: 20px;
+    background: rgb(0, 0, 0, 0.02); /* Very light background */
+    border-radius: 15px; /* Rounded corners */
+}
+
+/* Styling the labels */
+label {
+    font-weight: bold;
+    color: var(--primary-text);
+    margin-bottom: 5px;
+    display: inline-block;
+}
+
+/* Styling the Inputs */
+input, textarea {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 20px;
+    background: rgba(255, 255, 255, 0.8); /* Semi-transparent background */
+    border: 2px solid #e0e0e0; /* Light border */
+    border-radius: 8px; /* Rounded corners */
+    box-sizing: border-box; /* Ensures padding doesn't affect width */
+    font-family: inherit; /* Inherits font from body */
+    font-size: 1rem;   /* Consistent font size */
+    color: var(--primary-text);
+    transition: all 0.3s ease; /* Smooth transition for focus effect */
+}
+
+/* What happens when you click incside the textare/input */
+input:focus, textarea:focus {
+    border-color: var(--secondary-accent); /* Blue border on focus */
+    box-shadow: 0 0 15px rgba(0, 0, 225, 0.1); /* Glow effect */
+    outline: none; /* Removes default outline */
+    background-color: #fff;
+}
