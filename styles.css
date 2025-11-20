@@ -108,7 +108,7 @@ button {
     width: 100%; /* Full width button */
     padding: 15px;
     margin-top: 10px; 
-    background: linear-gradient(45deg, var(--accent-color), #32cd32); /* Gradient limegreen */
+    background: linear-gradient(45deg, var(--secondary-accent), #0fff0f); /* Gradient background */
     color: #fff; /* White text */
     border: none;
     border-radius: 8px; /* Rounded corners */
@@ -123,7 +123,7 @@ button {
 
 /* Hover State - The "lLift" Effect */
 button:hover {
-    background: linear-gradient(45deg, #32cd32, var(--accent-color)); /* Reverse gradient */
+    background: linear-gradient(45deg, #0fff0f, var(--secondary-accent)); /* Reverse gradient */
     box-shadow: 0 8px 20px rgba(50, 205, 50, 0.5); /* Enhanced shadow */
     transform: translateY(-3px); /* Lift effect */
 }
