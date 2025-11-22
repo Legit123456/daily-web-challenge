@@ -132,3 +132,27 @@ button:active {
     transform: translateY(-1px); /* Slightly lower on click */
     box-shadow: 0 3px 10px rgba(50, 205, 50, 0.3); /* Reduced shadow on click */
 }
+
+.social-row {
+    display: flex; /* The Magic Switch */
+    gap: 20px;
+    justify-content: center;
+    margin-top: 20px;
+    padding-bottom: 20px;
+}
+
+.social-btn {
+    background-color: #f0f0f0;
+    color: var(--primary-text);
+    padding: 10px;
+    border-radius: 20px;
+    border: 1px solid #ccc;
+    transition: all 0.3s ease;
+}
+
+.social-btn:hover {
+    background-color: var(--secondary-accent);
+    color: white;
+    border-color: var(--secondary-accent);
+    transform: translateY(-2px);
+}
