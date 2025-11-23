@@ -57,6 +57,18 @@ a:hover {
     text-shadow: 0 0 10px rgba(50, 205, 50, 0.4); /* Glow effect */
 }
 
+.profile-header {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    margin-bottom: 30px;
+    text-align: left;
+}
+
+.profile-info {
+    flex: 1;
+}
+
 /* List Styling */
 ul {
     list-style-type: square; /* Custom bullet points */
