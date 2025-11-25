@@ -96,7 +96,7 @@ label {
 /* Styling the Inputs */
 input, textarea {
     width: 100%;
-    padding: 12px;
+    padding: 15px;
     margin-bottom: 20px;
     background: rgba(255, 255, 255, 0.8); /* Semi-transparent background */
     border: 2px solid #e0e0e0; /* Light border */
@@ -118,7 +118,7 @@ input:focus, textarea:focus {
 
 button {
     width: 100%; /* Full width button */
-    padding: 15px;
+    padding: 16px;
     margin-top: 10px; 
     background: linear-gradient(45deg, var(--secondary-accent), #0fff0f); /* Gradient background */
     color: #fff; /* White text */
@@ -145,7 +145,7 @@ button:active {
     box-shadow: 0 3px 10px rgba(50, 205, 50, 0.3); /* Reduced shadow on click */
 }
 
-.social_row {
+.social-row {
     display: flex; /* The Magic Switch */
     gap: 20px;
     justify-content: center;
@@ -169,18 +169,61 @@ button:active {
     transform: translateY(-2px);
 }
 
+.newsletter-section {
+    margin-top: 40px;
+    padding: 20px;
+    background: rgb(0, 0, 0, 0.03); /* Very light background */
+    border-radius: 15px;
+    text-align: center;
+}
+
+.email-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0;
+    margin-top: 15px;
+    border: 1px solid #0fff0f;
+    border-radius: 8px;
+}
+
+.email-section input {
+    flex: 1;
+    margin-bottom: 0;
+}
+
+.email-section button {
+    width: auto;
+    margin-top: 0;
+    border-radius: 0 8px 8px 0;
+}
+
+.email-section button:hover {
+    transform: none;
+}
+
 @media (max-width: 768px) {
     .profile-header {
         flex-direction: column;  /* Stack the profile header vertically instead of side-by-side */
         text-align: center; 
     }
     
-    .social_row {
+    .social-row {
         flex-wrap: wrap;
     }
 
     div.container {
         padding: 15px; 
         width: 90%; 
+    }
+
+    .email-section {
+        flex-direction: column;
+        gap: 10px;
+        border: 0;
+    }
+
+    .email-section button {
+        border-radius: 8px;
     }
 }
