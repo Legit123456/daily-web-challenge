@@ -226,4 +226,8 @@ button:active {
     .email-section button {
         border-radius: 8px;
     }
+
+    .email-section button:hover {
+        transform: translateY(-3px);
+    }
 }

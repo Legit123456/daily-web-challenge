@@ -20,3 +20,4 @@ I am building a habit of coding every single day. I am starting small with HTML 
 | **Day 12** | Nov 23 | Flexbox Alignment | ✅ Done |
 | **Day 13** | Nov 24 | Mobile Responsiveness | ✅ Done |
 | **Day 14** | Nov 25 | Weekly Test & Refactor | ✅ Done |
+| **Day 15** | Nov 26 | Create script.js & add Variables | ✅ Done |
