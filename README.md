@@ -23,3 +23,4 @@ I am building a habit of coding every single day. I am starting small with HTML 
 | **Day 15** | Nov 26 | Create script.js & add Variables | ✅ Done |
 | **Day 16** | Nov 27 | DOM Inplimentation | ✅ Done |
 | **Day 17** | Nov 28 | Add the .addEventListener | ✅ Done |
+| **Day 18** | Nov 28 | Add the Mode toggler | ✅ Done |

@@ -1,15 +1,12 @@
 const myName = "Ahmad Umar Mukhtar";
 const myRole = "Full Stack Developer & Project Manager";
 
-let currentDay = "17";
+let currentDay = "18";
 let isStudent = true;
-
-console.log(`Hello, My name is ${myName} and I am a ${myRole}`);
-console.log(`Current Challenge Day: ${currentDay}`);
 
 const statusElement = document.getElementById("status-text");
 
-statusElement.innerText = `Day ${currentDay}: The Event (Listening for Clicks)`;
+statusElement.innerText = `Day ${currentDay}: The "Dark Mode" Toggle`;
 
 statusElement.style.color = "purple";
 statusElement.style.fontWeight = "bold";
@@ -30,4 +27,17 @@ subscribeButton.addEventListener("click", function() {
     subscribeButton.innerText = "Subscribed!";
     subscribeButton.style.backgroundColor = "var(--secondary-accent)";
     subscribeButton.disabled = true;
+});
+
+const themeButton = document.getElementById("theme-toggle");
+const body = document.body;
+
+themeButton.addEventListener("click", function() {
+    body.classList.toggle("dark-mode");
+
+    if (body.classList.contains("dark-mode")) {
+        themeButton.innerText = "☀️ Light Mode";
+    } else {
+        themeButton.innerText = "🌙 Dark Mode";
+    }
 });
