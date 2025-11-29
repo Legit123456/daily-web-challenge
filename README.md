@@ -21,3 +21,4 @@ I am building a habit of coding every single day. I am starting small with HTML 
 | **Day 13** | Nov 24 | Mobile Responsiveness | ✅ Done |
 | **Day 14** | Nov 25 | Weekly Test & Refactor | ✅ Done |
 | **Day 15** | Nov 26 | Create script.js & add Variables | ✅ Done |
+| **Day 16** | Nov 26 | DOM Inplimentation | ✅ Done |
