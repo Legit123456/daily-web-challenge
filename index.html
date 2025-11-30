@@ -1,81 +1,161 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Daily Challenge</title>
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Ahmad Umar Mukhtar — Developer Portfolio</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="icon" href="favicon.ico" />
 </head>
+
 <body>
-    <div class="test">
-        <div class="container">
-            <button id="theme-toggle" class="theme-btn">🌙 Dark Mode</button>
-            <div class="profile-header">
 
-                <img src="Profile.jpg" alt="My Profile Picture" width="150" >
+  <!-- Background shapes -->
+  <div class="bg-shape shape-1"></div>
+  <div class="bg-shape shape-2"></div>
+  <div class="bg-shape shape-3"></div>
 
-                <div class="profile-info">
-                    <h1>My Full Stack Developer Journey</h1>
-                    <p>
-                    <b>Full Stack Developer & Project Manager.</b> 
-                        I build scalable web applications and manage the lifecycle from concept to deployment.
-                    </p>
-                    <p><b>Current Status:</b> <span id="status-text">Loading status...</span></p> 
-                </div>
-                
+  <div class="page">
+
+    <!-- HEADER -->
+    <header class="site-header container glass reveal">
+        <div class="brand">
+    
+            <img src="Profile.jpg" alt="Profile" class="avatar" />
+
+            <div class="brand-text">
+                <h1 class="reveal">Ahmad Umar Mukhtar</h1>
+                <p class="role reveal">Full Stack Developer & Project Manager</p>
             </div>
-            
-            
-            <h2>My Hobbies</h2>
-            <ul>
-                <li>Learning to Code</li>
-                <li>Project Management</li>
-                <li>Problem solving</li>
-                <li>Playing Video Games</li>
-                <li>Exercising</li>
-                <li>Reading Books</li>
-                <li>Anime Enthusiast</li>
-            </ul>
-
-            <h3>Connect with me</h3>
-            <div class='social-row'>
-                <a class="social-btn" href="https://github.com/Legit123456">Github</a>
-                <a class="social-btn" href="https://github.com/Legit123456">LinkedIn</a>
-                <a class="social-btn" href="https://x.com/_InfiniteDomain">Twitter</a>
-                <a class="social-btn" href="https://github.com/Legit123456">Facebook</a>
-                <a class="social-btn" href="https://github.com/Legit123456">Instagram</a>
-            </div>
-
-            <hr>
-
-            <div class="contact-section">
-                <h3>Send me a Message</h3>
-                <form>
-                    <label for="name">Name:</label><br>
-                    <input type="text" id="name" name="name" placeholder="Your Name" required><br><br>
-
-                    <label for="email">Email:</label><br>
-                    <input type="email" id="email" name="email" placeholder="your@gmail.com" required><br><br>
-
-                    <label for="message">Message:</label><br>
-                    <textarea id="message" name="message" rows="4" placeholder="Type your message" required></textarea><br><br>
-
-                    <button type="button" id="send-btn">Send Message</button>
-                </form>
-            </div>
-
-            <div class="newsletter-section">
-                <h3>Subscribe to my Newsletter</h3>
-                <p>Get the latest updates on my coding journey.</p>
-                <div class="email-section">
-                    <input type="email" id="email" name="email" placeholder="Enter your email address">
-                    <button id="subscribed">Subscribe</button>
-                </div>
-            </div>
-        
         </div>
-    </div>
 
-<script src="script.js"></script>
+        <div class="header-actions reveal">
+            <button id="theme-toggle" class="theme-toggle">⚫ AMOLED</button>
+            <a class="btn-outline" href="Ahmad-Umar-Mukhtar-CV.pdf" download>Download CV</a>
+        </div>
+    </header>
+
+    <!-- MAIN -->
+    <main class="container">
+
+      <!-- Status -->
+      <section class="glass reveal">
+        <p id="status-text" class="status-text">Day — Loading…</p>
+      </section>
+
+      <!-- About -->
+      <section class="glass reveal">
+        <h2>About</h2>
+        <p>
+          <strong>Full Stack Developer & Project Manager.</strong>
+          I build scalable web applications and manage the lifecycle from concept to deployment. I focus on readable code, solid UX, and delivering business value.
+        </p>
+      </section>
+
+      <!-- Skills -->
+      <section class="glass reveal">
+        <h2>Skills</h2>
+        <ul class="inline-list">
+          <li>HTML</li><li>CSS</li><li>JavaScript</li>
+          <li>React</li><li>Node.js</li><li>Express</li>
+          <li>MongoDB</li><li>PostgreSQL</li><li>Git</li>
+        </ul>
+      </section>
+
+      <!-- Hobbies -->
+      <section class="glass reveal">
+        <h2>Hobbies</h2>
+        <ul class="inline-list">
+          <li>Coding</li><li>Project Mgmt</li><li>Fitness</li>
+          <li>Gaming</li><li>Reading</li><li>Anime</li>
+        </ul>
+      </section>
+
+      <!-- Social -->
+      <section class="glass reveal">
+        <h2>Connect</h2>
+        <div class="social-row">
+
+          <!-- GitHub -->
+          <a class="social-btn" href="https://github.com/Legit123456" target="_blank">
+            <svg width="24" height="24" fill="currentColor">
+              <path d="M12 .5A12 12 0 0 0 0 12.7a12.3 12.3 0 0 0 8.2 11.7c.6.1.8-.3.8-.6v-2c-3.3.8-4-1.7-4-1.7-.6-1.5-1.4-2-1.4-2-1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 .2 2-.7 2-.7-1.8-.2-3.7-1-3.7-4.3 0-1 .3-1.8 1-2.6-.1-.2-.5-1.3.1-2.7 0 0 .8-.2 2.6 1a9 9 0 0 1 5 0c1.8-1.2 2.6-1 2.6-1 .6 1.4.2 2.5.1 2.7.7.8 1 1.6 1 2.6 0 3.3-1.9 4.1-3.7 4.3 1 .8 1.9 2.4 1.9 4.9v3.2c0 .3.3.7.8.6a12.3 12.3 0 0 0 8.2-11.7A12 12 0 0 0 12 .5z"/>
+            </svg>
+          </a>
+
+          <!-- LinkedIn -->
+          <a class="social-btn" href="https://linkedin.com" target="_blank">
+            <svg width="24" height="24" fill="currentColor">
+              <path d="M4.98 3.5c0 1.38-1.1 2.5-2.48 2.5S0 4.88 0 3.5 1.1 1 2.5 1s2.48 1.12 2.48 2.5zM.46 8h4v12h-4V8zm7.12 0h3.83v1.72h.05c.53-1 1.84-2.05 3.79-2.05 4.05 0 4.8 2.67 4.8 6.13V20h-4v-5.37c0-1.28-.02-2.93-1.78-2.93-1.78 0-2.05 1.39-2.05 2.84V20h-4V8z"/>
+            </svg>
+          </a>
+
+          <!-- Twitter/X -->
+          <a class="social-btn" href="https://x.com/_InfiniteDomain" target="_blank">
+            <svg width="24" height="24" fill="currentColor">
+              <path d="M18.2 1H21l-6.5 7.4L22 23h-7.4l-5.2-8-6 8H1l7.1-9.6L1 1h7.5l4.7 7 5-7z"/>
+            </svg>
+          </a>
+
+          <!-- Facebook -->
+          <a class="social-btn" href="https://www.facebook.com/profile.php?id=61553258863799" target="_blank">
+            <svg width="24" height="24" fill="currentColor">
+              <path d="M22 12a10 10 0 1 0-11.6 9.9v-7h-2v-3h2V9.5a3.5 3.5 0 0 1 3.8-3.8h2.8v3h-2c-.9 0-1.2.4-1.2 1.1V12h3.2l-.5 3h-2.7v7A10 10 0 0 0 22 12"/>
+            </svg>
+          </a>
+
+          <!-- Instagram -->
+          <a class="social-btn" href="https://www.instagram.com/_infinite_domain_/" target="_blank">
+            <svg width="24" height="24" fill="currentColor">
+              <path d="M12 2.2c3.2 0 3.6 0 4.9.1a5.4 5.4 0 0 1 5 5c.1 1.3.1 1.7.1 4.9s0 3.6-.1 4.9a5.4 5.4 0 0 1-5 5c-1.3.1-1.7.1-4.9.1s-3.6 0-4.9-.1a5.4 5.4 0 0 1-5-5c-.1-1.3-.1-1.7-.1-4.9s0-3.6.1-4.9a5.4 5.4 0 0 1 5-5c1.3-.1 1.7-.1 4.9-.1m0-2.2c-3.3 0-3.7 0-5 .1A7.6 7.6 0 0 0 .1 7.2c-.1 1.3-.1 1.7-.1 4.9s0 3.6.1 4.9a7.6 7.6 0 0 0 6.9 6.9c1.3.1 1.7.1 5 .1s3.7 0 5-.1a7.6 7.6 0 0 0 6.9-6.9c.1-1.3.1-1.7.1-4.9s0-3.6-.1-4.9a7.6 7.6 0 0 0-6.9-6.9C15.7 0 15.3 0 12 0Z"/>
+              <circle cx="12" cy="12" r="3.2"/>
+              <circle cx="17.5" cy="6.5" r="1.4"/>
+            </svg>
+          </a>
+
+        </div>
+      </section>
+
+      <!-- Contact -->
+      <section class="glass reveal">
+        <h2>Send a Message</h2>
+        <form id="contact-form" novalidate>
+          <label>Name</label>
+          <input id="name" required />
+          <span id="name-error" class="field-error"></span>
+
+          <label>Email</label>
+          <input id="email" type="email" required />
+          <span id="email-error" class="field-error"></span>
+
+          <label>Message</label>
+          <textarea id="message" rows="5" required></textarea>
+          <span id="message-error" class="field-error"></span>
+
+          <button id="send-btn" class="btn-primary">Send</button>
+          <div id="form-feedback" class="form-feedback"></div>
+        </form>
+      </section>
+
+      <!-- Newsletter -->
+      <section class="glass reveal">
+        <h2>Newsletter</h2>
+        <p>Short, practical updates on my projects and learnings.</p>
+        <form id="newsletter-form" novalidate>
+          <input id="newsletter-email" type="email" placeholder="Your email" required />
+          <button id="subscribe-btn" class="btn-secondary">Subscribe</button>
+        </form>
+        <div id="newsletter-feedback" class="field-note"></div>
+      </section>
+
+    </main>
+
+    <footer class="site-footer glass reveal">
+      <p>© <span id="year"></span> Ahmad Umar Mukhtar — Remote Friendly</p>
+    </footer>
+
+  </div>
+
+  <script src="script.js"></script>
 </body>
 </html>
