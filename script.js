@@ -16,21 +16,21 @@ document.addEventListener("DOMContentLoaded", () => {
     body.classList.remove("theme-light", "theme-dark", "theme-amoled");
     if (name === "light") {
       body.classList.add("theme-light");
-      themeBtn.textContent = "🌙 Dark";
+      themeBtn.textContent = "☀️ Light";
       themeBtn.setAttribute("aria-pressed", "false");
     } else if (name === "amoled") {
       body.classList.add("theme-amoled");
-      themeBtn.textContent = "☀️ Light";
+      themeBtn.textContent = "⚫ AMOLED";
       themeBtn.setAttribute("aria-pressed", "true");
     } else {
       body.classList.add("theme-dark");
-      themeBtn.textContent = "⚫ AMOLED";
+      themeBtn.textContent = "🌙 Dark";
       themeBtn.setAttribute("aria-pressed", "false");
     }
   }
 
   // load saved or default to dark
-  const saved = localStorage.getItem(THEME_KEY) || "dark";
+  const saved = localStorage.getItem(THEME_KEY) || "light";
   applyTheme(saved);
 
   // cycle on click: light -> dark -> amoled -> light ...
