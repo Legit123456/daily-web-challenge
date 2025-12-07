@@ -1,55 +1,80 @@
 @import "tailwindcss";
 
-/* ─────────────────────────────────────────────
-   CUSTOM TAILWIND THEME TOKENS (NO CONFIG FILE)
-   These behave like Tailwind classes:
-   text-brand-green, bg-glass, shadow-glass, etc.
-────────────────────────────────────────────── */
 @theme {
-  --color-brand-green: #00ff9c;
-  --color-brand-green-dark: #00cc77;
-  --color-brand-dark: #0a0f0c;
-  --color-amoled: #000000;
-
-  --color-glass-bg: rgba(255, 255, 255, 0.07);
-  --color-glass-border: rgba(255, 255, 255, 0.18);
-
-  --shadow-glass: 0 8px 32px rgba(0, 0, 0, 0.25);
-
-  --radius-glass: 18px;
-
+  --color-brand-green: #00c675;
+  --color-brand-green-dark: #0a8f4a;
+  --color-brand-dark: #07100c;
+  
+  /* Utilities */
+  --radius-glass: 16px;
   --blur-glass: 18px;
 }
 
-/* Root CSS variables (for JS logic or fallback) */
+/* 1. DEFINE THE VARIABLES */
 :root {
-  --brand-green: #00ff9c;
-  --brand-green-dark: #00cc77;
-  --glass-bg: rgba(255, 255, 255, 0.07);
-  --glass-border: rgba(255, 255, 255, 0.18);
-  --brand-dark: #0a0f0c;
-  --amoled: #000000;
+  /* Default (Dark Mode) Values */
+  --brand-green: #00c675;
+  --brand-dark: #07100c;
+  
+  /* Dynamic Colors (These change based on theme) */
+  --text-main: #e8f7ef;       /* White-ish */
+  --text-muted: #bfead1;      /* Light Green-ish */
+  --glass-bg: rgba(255, 255, 255, 0.06);
+  --glass-border: rgba(255, 255, 255, 0.14);
+  --surface-glass: rgba(255, 255, 255, 0.05); /* For buttons/inputs */
+  --shadow-color: rgba(0, 0, 0, 0.45);
 }
 
-/* Base Page Styling */
+/* 2. LIGHT MODE OVERRIDES */
+body.light {
+  background: #f0f2f5 !important; /* Light Grey Background */
+  
+  /* Flip the variables to Dark Colors */
+  --text-main: #1a1a1a;       /* Almost Black */
+  --text-muted: #4a5568;      /* Dark Grey */
+  --brand-dark: #ffffff;
+  
+  /* Make glass darker so it shows up on white */
+  --glass-bg: rgba(255, 255, 255, 0.65); 
+  --glass-border: rgba(0, 0, 0, 0.1);
+  --surface-glass: rgba(0, 0, 0, 0.05); /* Light grey for inputs */
+  --shadow-color: rgba(0, 0, 0, 0.1);
+}
+
+body.amoled {
+  background: #000000 !important;
+  --glass-bg: rgba(20, 20, 20, 0.4);
+}
+
+/* Base Styles */
 body {
   background: var(--brand-dark);
-  color: #e8f7ef;
-  font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  color: var(--text-main);
+  font-family: Inter, ui-sans-serif, system-ui, sans-serif;
   overflow-x: hidden;
+  margin: 0;
+  transition: background 0.3s ease, color 0.3s ease;
 }
 
-/* GLASSMORPHISM UTILITY */
+.container {
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* Glass Class using Variables */
 .glass {
   background: var(--glass-bg);
   border: 1px solid var(--glass-border);
-  backdrop-filter: blur(var(--blur-glass));
-  -webkit-backdrop-filter: blur(var(--blur-glass));
-  border-radius: var(--radius-glass);
-  box-shadow: var(--shadow-glass);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border-radius: 16px;
+  box-shadow: 0 12px 40px var(--shadow-color);
+  padding: 22px;
+  margin-bottom: 24px;
 }
 
-/* BACKGROUND BLOBS */
+/* Background Shapes */
 .bg-shape {
   position: fixed;
   filter: blur(80px);
@@ -57,90 +82,24 @@ body {
   z-index: -2;
   pointer-events: none;
 }
+/* In Light mode, make shapes softer */
+body.light .bg-shape { opacity: 0.25; }
 
-.shape-1 {
-  width: 480px;
-  height: 480px;
-  background: linear-gradient(180deg, var(--brand-green), #0a8f4a);
-  top: -120px;
-  left: -80px;
-  border-radius: 50%;
-}
+.shape-1 { width: 420px; height: 420px; background: linear-gradient(180deg, var(--brand-green), #0a8f4a); top: -120px; left: -80px; border-radius: 50%; }
+.shape-2 { width: 340px; height: 340px; background: linear-gradient(180deg, #0f7a4f, #00613a); bottom: -60px; right: -40px; border-radius: 50%; }
+.shape-3 { width: 260px; height: 260px; background: linear-gradient(180deg, #00d88f, #008f5e); top: 45%; left: 65%; border-radius: 50%; }
 
-.shape-2 {
-  width: 340px;
-  height: 340px;
-  background: linear-gradient(180deg, #0f7a4f, #00613a);
-  bottom: -60px;
-  right: -40px;
-  border-radius: 50%;
-}
+/* Utilities */
+.reveal { opacity: 0; transform: translateY(36px); transition: transform 0.85s, opacity 0.75s; }
+.reveal.visible { opacity: 1; transform: translateY(0); }
 
-.shape-3 {
-  width: 260px;
-  height: 260px;
-  background: linear-gradient(180deg, #00d88f, #008f5e);
-  top: 45%;
-  left: 65%;
-  border-radius: 50%;
-}
-
-/* SCROLL REVEAL ANIMATION */
-.reveal {
-  opacity: 0;
-  transform: translateY(36px);
-  transition: transform 0.85s cubic-bezier(0.2, 0.9, 0.2, 1),
-    opacity 0.75s ease;
-}
-
-.reveal.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* SOCIAL BUTTON UTILITY */
+/* Updated Social Button to use Variables */
 .social-btn {
-  @apply w-12 h-12 flex items-center justify-center rounded-full bg-white/5 border border-white/10 hover:-translate-y-1 hover:bg-brand-green/20 transition-all duration-300 text-white;
+  @apply w-[46px] h-[46px] flex items-center justify-center rounded-full transition-all duration-300;
+  background: var(--surface-glass);
+  border: 1px solid var(--glass-border);
+  color: var(--text-main);
 }
-
-/* AMOLED MODE (PURE BLACK BACKGROUND) */
-body.amoled {
-  background: #000000 !important;
-}
-
-/* LIGHT MODE FIXES */
-body.light {
-  background: #f7f7f7 !important;
-  color: #0a0f0c !important;
-}
-
-body.light .glass {
-  background: rgba(255, 255, 255, 0.4) !important;
-  color: #0a0f0c;
-}
-
-body.light .social-btn {
-  @apply text-brand-dark bg-white/70 border-gray-300;
-}
-
-/* Status Text & Section Styling */
-.status-text {
-  font-size: 1.125rem;
-  font-weight: 500;
-  letter-spacing: 0.05em;
-  color: #e8f7ef;
-  margin: 0;
-}
-
-body.light .status-text {
-  color: #0a0f0c !important;
-}
-
-/* Glass section padding */
-.glass {
-  padding: 2rem;
-}
-
-body.light section.glass {
-  padding: 2rem;
+.social-btn:hover {
+  @apply -translate-y-1 shadow-lg bg-[var(--brand-green)]/20;
 }

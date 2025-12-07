@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Header from "./components/Header";
 import About from "./components/About";
 import Skills from "./components/Skills";
@@ -6,9 +6,17 @@ import Social from "./components/Social";
 import Contact from "./components/Contact";
 import Newsletter from "./components/Newsletter";
 import Footer from "./components/Footer";
-import "./index.css"; // ensure this points to the CSS you edited earlier (Tailwind theme tokens)
+import { loadTheme, applyTheme } from "./components/utils/theme"; // Import your util
+import "./index.css"; 
 
 function App() {
+  
+  // Apply theme on initial load
+  useEffect(() => {
+    const savedTheme = loadTheme();
+    applyTheme(savedTheme);
+  }, []);
+
   return (
     <div className="page">
       <div className="bg-shape shape-1" aria-hidden="true"></div>
@@ -17,9 +25,12 @@ function App() {
 
       <Header />
 
-      <main className="container main">
+      {/* FIX: Using the .container class we restored in CSS */}
+      <main className="container main pb-10">
         <section className="glass reveal visible">
-          <p id="status-text" className="status-text">Day 19: Glassmorphic Portfolio</p>
+          <p id="status-text" className="status-text text-[var(--brand-green)] font-bold">
+            Day 19: Glassmorphic Portfolio
+          </p>
         </section>
 
         <About />

@@ -4,7 +4,7 @@ const Social = () => {
   // wrapper class uses your 'social-btn' utility defined in index.css
   return (
     <section className="glass reveal visible p-6 mt-6">
-      <h2 className="text-2xl font-bold mb-4 text-white">Connect</h2>
+      <h2 className="text-2xl font-bold mb-4 text-[var(--text-main)]">Connect</h2>
 
       <div className="flex gap-4 flex-wrap items-center">
         <a aria-label="GitHub" href="https://github.com/Legit123456" target="_blank" rel="noreferrer"
