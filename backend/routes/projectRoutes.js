@@ -37,6 +37,31 @@ router.post('/', async (req, res) => {
   }
 });
 
+// @desc    Update a project
+// @route   PUT /api/projects/:id
+// @access  Public
+router.put('/:id', async (req, res) => {
+  try {
+    const { title, description, tech, github, link } = req.body;
+    const project = await Project.findById(req.params.id);
+
+    if (project) {
+      project.title = title || project.title;
+      project.description = description || project.description;
+      project.tech = tech || project.tech;
+      project.github = github || project.github;
+      project.link = link || project.link;
+
+      const updatedProject = await project.save();
+      res.json(updatedProject);
+    } else {
+      res.status(404).json({ message: 'Project not found' });
+    }
+  } catch (error) {
+    res.status(500).json({ message: 'Server Error' });
+  }
+});
+
 // @desc    Delete a project
 // @route   DELETE /api/projects/:id
 // @access  Public (for now)
