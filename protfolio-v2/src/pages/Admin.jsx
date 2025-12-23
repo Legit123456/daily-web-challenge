@@ -2,8 +2,12 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
 import RevealOnScroll from "../components/RevealOnScroll";
+import { useNavigate } from "react-router-dom";
 
 const Admin = () => {
+
+  const navigate = useNavigate();
+
   const [form, setForm] = useState({
     title: "",
     description: "",
@@ -15,6 +19,11 @@ const Admin = () => {
   const [projects, setProjects] = useState([]); 
   const [loading, setLoading] = useState(false);
   const [editId, setEditId] = useState(null); // Track if we are editing (null = add mode)
+  const handleLogout = () => {
+    localStorage.removeItem("userInfo"); // Destroy the badge
+    toast.success("Logged out successfully 👋");
+    navigate("/login"); // Go to login
+  };
 
   // 1. Fetch Projects
   const fetchProjects = async () => {
@@ -34,6 +43,16 @@ const Admin = () => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
+  // Helper: Get Token from LocalStorage
+  const getAuthHeaders = () => {
+    const userInfo = JSON.parse(localStorage.getItem("userInfo"));
+    return {
+      headers: {
+        Authorization: `Bearer ${userInfo?.token}`,
+      },
+    };
+  };
+
   // 2. Handle Submit (Smart Logic: Add vs Update)
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -46,7 +65,7 @@ const Admin = () => {
       if (editId) {
         // --- UPDATE MODE (PUT) ---
         await toast.promise(
-          axios.put(`http://localhost:5000/api/projects/${editId}`, payload),
+          axios.put(`http://localhost:5000/api/projects/${editId}`, payload, getAuthHeaders()),
           {
             pending: 'Updating project...',
             success: 'Project updated successfully! 🔄',
@@ -56,7 +75,7 @@ const Admin = () => {
       } else {
         // --- ADD MODE (POST) ---
         await toast.promise(
-          axios.post("http://localhost:5000/api/projects", payload),
+          axios.post("http://localhost:5000/api/projects", payload, getAuthHeaders()),
           {
             pending: 'Saving project...',
             success: 'Project added successfully! 🚀',
@@ -80,7 +99,7 @@ const Admin = () => {
   const handleDelete = async (id) => {
     if (window.confirm("Are you sure you want to delete this project?")) {
       try {
-        await axios.delete(`http://localhost:5000/api/projects/${id}`);
+        await axios.delete(`http://localhost:5000/api/projects/${id}`, getAuthHeaders());
         toast.success("Project deleted! 🗑️");
         fetchProjects();
       } catch (error) {
@@ -112,6 +131,19 @@ const Admin = () => {
 
   return (
     <div className="px-4 py-10 max-w-4xl mx-auto">
+
+      {/* HEADER WITH LOGOUT */}
+      <div className="flex justify-between items-center mb-6">
+        <h2 className="text-3xl font-bold text-[var(--text-main)]">
+          {editId ? "Edit Project ✏️" : "Admin Dashboard 🛠️"}
+        </h2>
+        <button 
+          onClick={handleLogout}
+          className="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-lg font-bold transition-colors shadow-lg shadow-red-500/20"
+        >
+          Logout ✌️
+        </button>
+      </div>
       
       <RevealOnScroll className="glass mb-10">
         <h2 className="text-3xl font-bold mb-6 text-(--text-main) text-center">

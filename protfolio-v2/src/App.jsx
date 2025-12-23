@@ -9,6 +9,8 @@ import { loadTheme, applyTheme } from "./components/utils/theme";
 import { ToastContainer, toast } from 'react-toastify';
 import "./index.css";
 import Admin from "./pages/Admin";
+import Login from "./pages/Login";
+import ProtectedRoute from "./components/ProtectedRoute";
 
 function App() {
   useEffect(() => {
@@ -31,7 +33,12 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/projects" element={<Projects />} />
-            <Route path="/admin" element={<Admin />} />
+            <Route path="/admin" element={
+              <ProtectedRoute>
+                <Admin />
+              </ProtectedRoute>
+            } />
+            <Route path="/login" element={<Login />} />
           </Routes>
         </main>
 

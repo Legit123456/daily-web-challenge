@@ -3,6 +3,7 @@ import cors from 'cors';
 import dotenv from 'dotenv';
 import mongoose from 'mongoose';
 import projectRoutes from './routes/projectRoutes.js';
+import userRoutes from './routes/userRoutes.js';
 
 // 1. Initialize Configuration
 dotenv.config();
@@ -35,6 +36,7 @@ app.get('/', (req, res) => {
 });
 
 app.use('/api/projects', projectRoutes);
+app.use('/api/users', userRoutes);
 
 // Express 5 Feature: Native 404 Handler (No extra packages needed)
 app.use((req, res) => {

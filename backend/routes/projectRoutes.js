@@ -1,5 +1,6 @@
 import express from 'express';
-import Project from '../models/Project.js'; // Note the .js extension!
+import Project from '../models/Project.js'; 
+import { protect } from '../middleware/authMiddleware.js';
 
 const router = express.Router();
 
@@ -18,7 +19,7 @@ router.get('/', async (req, res) => {
 // @desc    Create a project
 // @route   POST /api/projects
 // @access  Public (We will lock this down later)
-router.post('/', async (req, res) => {
+router.post('/', protect, async (req, res) => {
   try {
     const { title, description, tech, github, link } = req.body;
 
@@ -40,7 +41,7 @@ router.post('/', async (req, res) => {
 // @desc    Update a project
 // @route   PUT /api/projects/:id
 // @access  Public
-router.put('/:id', async (req, res) => {
+router.put('/:id', protect, async (req, res) => {
   try {
     const { title, description, tech, github, link } = req.body;
     const project = await Project.findById(req.params.id);
@@ -65,7 +66,7 @@ router.put('/:id', async (req, res) => {
 // @desc    Delete a project
 // @route   DELETE /api/projects/:id
 // @access  Public (for now)
-router.delete('/:id', async (req, res) => {
+router.delete('/:id', protect, async (req, res) => {
   try {
     const project = await Project.findById(req.params.id);
 
