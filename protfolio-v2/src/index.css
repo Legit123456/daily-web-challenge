@@ -1,5 +1,12 @@
 @import "tailwindcss";
 
+/* FORCE FULL HEIGHT */
+html, body, #root {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
 @theme {
   --color-brand-green: #00c675;
   --color-brand-green-dark: #0a8f4a;
@@ -101,5 +108,5 @@ body.light .bg-shape { opacity: 0.25; }
   color: var(--text-main);
 }
 .social-btn:hover {
-  @apply -translate-y-1 shadow-lg bg-[var(--brand-green)]/20;
+  @apply -translate-y-1 shadow-lg bg-(--brand-green)/20;
 }

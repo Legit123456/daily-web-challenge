@@ -1,10 +1,11 @@
 import React from "react";
 import RevealOnScroll from "./RevealOnScroll";
+import { SKILLS, HOBBIES } from "../data"; // Import the data
 
 const Skills = () => {
-  // Updated Pill to use variables for border and bg
+  
   const Pill = ({ children }) => (
-    <li className="px-4 py-2 rounded-full bg-[var(--surface-glass)] border border-[var(--glass-border)] text-[var(--text-main)] font-medium text-sm hover:bg-[var(--glass-border)] transition-colors cursor-default">
+    <li className="px-4 py-2 rounded-full bg-(--surface-glass) border border-(--glass-border) text-(--text-main) font-medium text-sm hover:bg-(--glass-border) transition-colors cursor-default">
       {children}
     </li>
   );
@@ -12,19 +13,22 @@ const Skills = () => {
   return (
     <>
       <RevealOnScroll className="glass mt-6">
-        <h2 className="text-2xl font-bold mb-4 text-[var(--text-main)]">Skills</h2>
+        <h2 className="text-2xl font-bold mb-4 text-(--text-main)">Skills</h2>
         <ul className="flex flex-wrap gap-3 list-none p-0 m-0">
-          <Pill>HTML</Pill><Pill>CSS</Pill><Pill>JavaScript</Pill>
-          <Pill>React</Pill><Pill>Node.js</Pill><Pill>TailwindCSS</Pill>
-          <Pill>Express</Pill><Pill>MongoDB</Pill><Pill>Git</Pill>
+          {/* THE LOGIC: Loop through the SKILLS array */}
+          {SKILLS.map((skill, index) => (
+            <Pill key={index}>{skill}</Pill>
+          ))}
         </ul>
       </RevealOnScroll>
 
       <RevealOnScroll className="glass mt-6">
-        <h2 className="text-2xl font-bold mb-4 text-[var(--text-main)]">Hobbies</h2>
+        <h2 className="text-2xl font-bold mb-4 text-(--text-main)">Hobbies</h2>
         <ul className="flex flex-wrap gap-3 list-none p-0 m-0">
-          <Pill>Coding</Pill><Pill>Project Mgmt</Pill><Pill>Fitness</Pill>
-          <Pill>Gaming</Pill><Pill>Reading</Pill><Pill>Anime</Pill>
+          {/* THE LOGIC: Loop through the HOBBIES array */}
+          {HOBBIES.map((hobby, index) => (
+             <Pill key={index}>{hobby}</Pill>
+          ))}
         </ul>
       </RevealOnScroll>
     </>
