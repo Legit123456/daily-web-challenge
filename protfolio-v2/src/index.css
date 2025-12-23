@@ -1,7 +1,9 @@
 @import "tailwindcss";
 
 /* FORCE FULL HEIGHT */
-html, body, #root {
+html,
+body,
+#root {
   height: 100%;
   margin: 0;
   padding: 0;
@@ -11,7 +13,7 @@ html, body, #root {
   --color-brand-green: #00c675;
   --color-brand-green-dark: #0a8f4a;
   --color-brand-dark: #07100c;
-  
+
   /* Utilities */
   --radius-glass: 16px;
   --blur-glass: 18px;
@@ -22,29 +24,36 @@ html, body, #root {
   /* Default (Dark Mode) Values */
   --brand-green: #00c675;
   --brand-dark: #07100c;
-  
+
   /* Dynamic Colors (These change based on theme) */
-  --text-main: #e8f7ef;       /* White-ish */
-  --text-muted: #bfead1;      /* Light Green-ish */
+  --text-main: #e8f7ef;
+  /* White-ish */
+  --text-muted: #bfead1;
+  /* Light Green-ish */
   --glass-bg: rgba(255, 255, 255, 0.06);
   --glass-border: rgba(255, 255, 255, 0.14);
-  --surface-glass: rgba(255, 255, 255, 0.05); /* For buttons/inputs */
+  --surface-glass: rgba(255, 255, 255, 0.05);
+  /* For buttons/inputs */
   --shadow-color: rgba(0, 0, 0, 0.45);
 }
 
 /* 2. LIGHT MODE OVERRIDES */
 body.light {
-  background: #f0f2f5 !important; /* Light Grey Background */
-  
+  background: #f0f2f5 !important;
+  /* Light Grey Background */
+
   /* Flip the variables to Dark Colors */
-  --text-main: #1a1a1a;       /* Almost Black */
-  --text-muted: #4a5568;      /* Dark Grey */
+  --text-main: #1a1a1a;
+  /* Almost Black */
+  --text-muted: #4a5568;
+  /* Dark Grey */
   --brand-dark: #ffffff;
-  
+
   /* Make glass darker so it shows up on white */
-  --glass-bg: rgba(255, 255, 255, 0.65); 
+  --glass-bg: rgba(255, 255, 255, 0.65);
   --glass-border: rgba(0, 0, 0, 0.1);
-  --surface-glass: rgba(0, 0, 0, 0.05); /* Light grey for inputs */
+  --surface-glass: rgba(0, 0, 0, 0.05);
+  /* Light grey for inputs */
   --shadow-color: rgba(0, 0, 0, 0.1);
 }
 
@@ -89,16 +98,50 @@ body {
   z-index: -2;
   pointer-events: none;
 }
-/* In Light mode, make shapes softer */
-body.light .bg-shape { opacity: 0.25; }
 
-.shape-1 { width: 420px; height: 420px; background: linear-gradient(180deg, var(--brand-green), #0a8f4a); top: -120px; left: -80px; border-radius: 50%; }
-.shape-2 { width: 340px; height: 340px; background: linear-gradient(180deg, #0f7a4f, #00613a); bottom: -60px; right: -40px; border-radius: 50%; }
-.shape-3 { width: 260px; height: 260px; background: linear-gradient(180deg, #00d88f, #008f5e); top: 45%; left: 65%; border-radius: 50%; }
+/* In Light mode, make shapes softer */
+body.light .bg-shape {
+  opacity: 0.25;
+}
+
+.shape-1 {
+  width: 420px;
+  height: 420px;
+  background: linear-gradient(180deg, var(--brand-green), #0a8f4a);
+  top: -120px;
+  left: -80px;
+  border-radius: 50%;
+}
+
+.shape-2 {
+  width: 340px;
+  height: 340px;
+  background: linear-gradient(180deg, #0f7a4f, #00613a);
+  bottom: -60px;
+  right: -40px;
+  border-radius: 50%;
+}
+
+.shape-3 {
+  width: 260px;
+  height: 260px;
+  background: linear-gradient(180deg, #00d88f, #008f5e);
+  top: 45%;
+  left: 65%;
+  border-radius: 50%;
+}
 
 /* Utilities */
-.reveal { opacity: 0; transform: translateY(36px); transition: transform 0.85s, opacity 0.75s; }
-.reveal.visible { opacity: 1; transform: translateY(0); }
+.reveal {
+  opacity: 0;
+  transform: translateY(36px);
+  transition: transform 0.85s, opacity 0.75s;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
 
 /* Updated Social Button to use Variables */
 .social-btn {
@@ -107,6 +150,15 @@ body.light .bg-shape { opacity: 0.25; }
   border: 1px solid var(--glass-border);
   color: var(--text-main);
 }
+
 .social-btn:hover {
   @apply -translate-y-1 shadow-lg bg-(--brand-green)/20;
+}
+
+.line-clamp-3 {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }

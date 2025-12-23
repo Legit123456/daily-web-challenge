@@ -2,6 +2,7 @@ import express from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
 import mongoose from 'mongoose';
+import projectRoutes from './routes/projectRoutes.js';
 
 // 1. Initialize Configuration
 dotenv.config();
@@ -32,6 +33,8 @@ app.get('/', (req, res) => {
   // Express 5 Breaking Change: You MUST chain .status() before .send()
   res.status(200).send('API is running... Status: Online 🚀');
 });
+
+app.use('/api/projects', projectRoutes);
 
 // Express 5 Feature: Native 404 Handler (No extra packages needed)
 app.use((req, res) => {

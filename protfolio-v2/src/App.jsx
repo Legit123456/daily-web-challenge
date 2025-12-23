@@ -6,7 +6,9 @@ import Footer from "./components/Footer";
 import Home from "./pages/Home";       // Import Page
 import Projects from "./pages/Projects"; // Import Page
 import { loadTheme, applyTheme } from "./components/utils/theme";
+import { ToastContainer, toast } from 'react-toastify';
 import "./index.css";
+import Admin from "./pages/Admin";
 
 function App() {
   useEffect(() => {
@@ -16,6 +18,7 @@ function App() {
   return (
     // 2. WRAP EVERYTHING IN BROWSER ROUTER
     <BrowserRouter>
+      <ToastContainer position="top-center" theme="dark" />
       <div className="page min-h-screen flex flex-col relative">
         <div className="bg-shape shape-1" aria-hidden="true"></div>
         <div className="bg-shape shape-2" aria-hidden="true"></div>
@@ -23,11 +26,12 @@ function App() {
 
         <Header />
 
-        <main className="container main pb-10 flex-grow w-full">
+        <main className="container main pb-10 grow w-full">
           {/* 3. DEFINE ROUTES */}
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/projects" element={<Projects />} />
+            <Route path="/admin" element={<Admin />} />
           </Routes>
         </main>
 
