@@ -10,8 +10,8 @@ const Home = () => {
   return (
     <>
       <section className="glass reveal visible">
-        <p className="status-text text-[var(--brand-green)] font-bold">
-          Day 20: React Router Activated
+        <p className="status-text text-(--brand-green) font-bold">
+          Day 20: Demo Deployment
         </p>
       </section>
       
