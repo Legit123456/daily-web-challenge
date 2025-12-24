@@ -9,52 +9,62 @@ const ProjectCard = ({ project }) => {
   const [isExpanded, setIsExpanded] = useState(false);
   
   // Adjusted threshold to 100 characters for testing
-  const isLongDescription = project.description.length > 100; 
+  const isLongDescription = project.description.length > 120; 
 
   return (
     <RevealOnScroll className="glass p-6! hover:translate-y-[-5px] transition-transform duration-300 flex flex-col h-full">
-      <div className="flex justify-between items-start mb-2">
-        <h3 className="text-xl font-bold text-(--brand-green)">
+
+      <div className="w-full h-48 overflow-hidden bg-(--surface-glass)">
+        {project.image ? (
+          <img 
+            src={project.image} 
+            alt={project.title} 
+            className="w-full h-full object-cover hover:scale-110 transition-transform duration-500"
+          />
+        ) : (
+          <div className="w-full h-full flex items-center justify-center text-(--text-muted) italic">
+            No image available
+          </div>
+        )}
+      </div>
+
+      <div className="p-6 flex flex-col grow">
+        <h3 className="text-xl font-bold text-(--brand-green) mb-2">
           {project.title}
         </h3>
-      </div>
-      
-      <div className="mb-4">
-        {/* We use the custom CSS class 'line-clamp-3' here */}
-        <p className={`text-(--text-main) text-sm leading-relaxed opacity-90 ${!isExpanded ? 'line-clamp-3' : ''}`}>
-          {project.description}
-        </p>
         
-        {isLongDescription && (
-          <button 
-            onClick={() => setIsExpanded(!isExpanded)}
-            className="text-(--brand-green) text-xs font-bold mt-2 hover:underline cursor-pointer focus:outline-none"
-          >
-            {isExpanded ? "Show Less" : "Read More"}
-          </button>
-        )}
-      </div>
+        <div className="mb-4">
+          <p className={`text-(--text-main) text-sm leading-relaxed opacity-90 ${!isExpanded ? 'line-clamp-3' : ''}`}>
+            {project.description}
+          </p>
+          {isLongDescription && (
+            <button 
+              onClick={() => setIsExpanded(!isExpanded)}
+              className="text-(--brand-green) text-xs font-bold mt-2 hover:underline cursor-pointer"
+            >
+              {isExpanded ? "Show Less" : "Read More"}
+            </button>
+          )}
+        </div>
 
-      <div className="flex flex-wrap gap-2 mb-4">
-        {project.tech.map((tech, index) => (
-          <span 
-            key={index} 
-            className="px-2 py-1 text-xs rounded-md bg-(--surface-glass) border border-(--glass-border) text-(--text-muted)"
-          >
-            {tech}
-          </span>
-        ))}
-      </div>
+        <div className="flex flex-wrap gap-2 mb-4">
+          {project.tech.map((tech, index) => (
+            <span key={index} className="px-2 py-1 text-xs rounded-md bg-(--surface-glass) border border-(--glass-border) text-(--text-muted)">
+              {tech}
+            </span>
+          ))}
+        </div>
 
-      <div className="flex items-center gap-4 mt-auto">
-        <a href={project.github} target="_blank" rel="noreferrer" className="text-sm font-bold text-(--text-main) hover:text-(--brand-green) transition-colors flex items-center gap-1">
-           View Code ↗
-        </a>
-        {project.link !== "#" && (
-          <a href={project.link} target="_blank" rel="noreferrer" className="text-sm font-bold text-(--text-main) hover:text-(--brand-green) transition-colors">
-            Live Demo ↗
+        <div className="flex items-center gap-4 mt-auto pt-4 border-t border-(--glass-border)">
+          <a href={project.github} target="_blank" rel="noreferrer" className="text-sm font-bold text-(--text-main) hover:text-(--brand-green) transition-colors">
+             GitHub ↗
           </a>
-        )}
+          {project.link && (
+            <a href={project.link} target="_blank" rel="noreferrer" className="text-sm font-bold text-(--text-main) hover:text-(--brand-green) transition-colors">
+              Live Demo ↗
+            </a>
+          )}
+        </div>
       </div>
     </RevealOnScroll>
   );

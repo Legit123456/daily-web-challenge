@@ -1,5 +1,6 @@
-import React, { useEffect } from "react";
-// 1. IMPORT ROUTER TOOLS
+import React, { useState, useEffect } from "react";
+import { loadingEmitter } from "./main"; // Import the emitter
+import LoadingSpinner from "./components/LoadingSpinner";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
@@ -13,13 +14,21 @@ import Login from "./pages/Login";
 import ProtectedRoute from "./components/ProtectedRoute";
 
 function App() {
+
+  const [globalLoading, setGlobalLoading] = useState(false);
+
   useEffect(() => {
+    loadingEmitter.subscribe(setGlobalLoading);
     applyTheme(loadTheme());
   }, []);
 
   return (
     // 2. WRAP EVERYTHING IN BROWSER ROUTER
     <BrowserRouter>
+
+      {/* Show the spinner whenever globalLoading is true */}
+      {globalLoading && <LoadingSpinner />}
+
       <ToastContainer position="top-center" theme="dark" />
       <div className="page min-h-screen flex flex-col relative">
         <div className="bg-shape shape-1" aria-hidden="true"></div>

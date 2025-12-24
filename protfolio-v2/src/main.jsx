@@ -1,3 +1,4 @@
+import React, { useState, useEffect } from 'react';
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import './index.css'
@@ -14,6 +15,47 @@ axios.interceptors.response.use(
       localStorage.removeItem('userInfo'); // Clear local storage
       window.location.href = '/login'; // Force redirect to login
     }
+    return Promise.reject(error);
+  }
+);
+export const loadingEmitter = {
+  activeRequests: 0,
+  subscribers: [],
+  subscribe(callback) {
+    this.subscribers.push(callback);
+  },
+  notify(isLoading) {
+    this.subscribers.forEach(cb => cb(isLoading));
+  },
+  start() {
+    this.activeRequests++;
+    if (this.activeRequests === 1) this.notify(true);
+  },
+  stop() {
+    this.activeRequests--;
+    if (this.activeRequests <= 0) {
+      this.activeRequests = 0;
+      this.notify(false);
+    }
+  }
+};
+
+axios.interceptors.request.use(config => {
+  loadingEmitter.start();
+  return config;
+}, error => {
+  loadingEmitter.stop();
+  return Promise.reject(error);
+});
+
+axios.interceptors.response.use(
+  response => {
+    loadingEmitter.stop();
+    return response;
+  },
+  error => {
+    loadingEmitter.stop();
+    // Your existing 401 logic here...
     return Promise.reject(error);
   }
 );

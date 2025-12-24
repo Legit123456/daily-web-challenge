@@ -22,18 +22,18 @@ const Header = () => {
     <header className="container site-header glass reveal visible flex flex-col md:flex-row justify-between items-start md:items-center gap-6 mt-0 rounded-t-none!">
       
       {/* Brand Section */}
-      <Link to="/" className="flex flex-row items-center gap-[14px] no-underline">
+      <Link to="/" className="flex flex-row items-center gap-3.5 no-underline">
         <img
           src={PROFILE.avatar}
           alt="Profile"
-          className="avatar w-[84px] h-[84px] md:w-24 md:h-24 rounded-full object-cover border-[3px] border-[var(--brand-green)]/50 shadow-[0_0_20px_rgba(0,255,100,0.15)]"
+          className="avatar w-[84px] h-[84px] md:w-24 md:h-24 rounded-full object-cover border-[3px] border-(--brand-green)/50 shadow-[0_0_20px_rgba(0,255,100,0.15)]"
         />
 
         <div className="flex flex-col">
-          <h1 className="text-xl md:text-2xl font-bold text-[var(--text-main)] reveal visible">
+          <h1 className="text-xl md:text-2xl font-bold text-(--text-main) reveal visible">
             {PROFILE.name}
           </h1>
-          <p className="text-[var(--text-main)] text-sm md:text-base font-medium reveal visible mt-[2px]">
+          <p className="text-(--text-main) text-sm md:text-base font-medium reveal visible mt-0.5">
             {PROFILE.role}
           </p>
         </div>
