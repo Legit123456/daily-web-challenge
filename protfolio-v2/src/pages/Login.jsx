@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { API_BASE_URL } from "../config";
 import axios from "axios";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom"; // To redirect after login
@@ -19,7 +20,7 @@ const Login = () => {
 
     try {
       // 1. Send Credentials to Backend
-      const { data } = await axios.post("http://localhost:5000/api/users/login", form);
+      const { data } = await axios.post(`${API_BASE_URL}/api/users/login`, form);;
 
       // 2. Save the "Badge" (Token) to LocalStorage
       localStorage.setItem("userInfo", JSON.stringify(data));

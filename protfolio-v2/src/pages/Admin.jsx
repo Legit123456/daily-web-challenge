@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { API_BASE_URL } from "../config";
 import axios from "axios";
 import { toast } from "react-toastify";
 import RevealOnScroll from "../components/RevealOnScroll";
@@ -28,7 +29,7 @@ const Admin = () => {
   // 1. Fetch Projects
   const fetchProjects = async () => {
     try {
-      const { data } = await axios.get("http://localhost:5000/api/projects");
+      const { data } = await axios.get(`${API_BASE_URL}/api/projects`);
       setProjects(data);
     } catch (error) {
       console.error("Error fetching projects:", error);
@@ -65,7 +66,7 @@ const Admin = () => {
       if (editId) {
         // --- UPDATE MODE (PUT) ---
         await toast.promise(
-          axios.put(`http://localhost:5000/api/projects/${editId}`, payload, getAuthHeaders()),
+          await axios.put(`${API_BASE_URL}/api/projects/${editId}`, payload, getAuthHeaders()),
           {
             pending: 'Updating project...',
             success: 'Project updated successfully! 🔄',
@@ -75,7 +76,7 @@ const Admin = () => {
       } else {
         // --- ADD MODE (POST) ---
         await toast.promise(
-          axios.post("http://localhost:5000/api/projects", payload, getAuthHeaders()),
+          await axios.post(`${API_BASE_URL}/api/projects`, payload, getAuthHeaders()),
           {
             pending: 'Saving project...',
             success: 'Project added successfully! 🚀',
@@ -99,7 +100,7 @@ const Admin = () => {
   const handleDelete = async (id) => {
     if (window.confirm("Are you sure you want to delete this project?")) {
       try {
-        await axios.delete(`http://localhost:5000/api/projects/${id}`, getAuthHeaders());
+        await axios.delete(`${API_BASE_URL}/api/projects/${id}`, getAuthHeaders());
         toast.success("Project deleted! 🗑️");
         fetchProjects();
       } catch (error) {
@@ -134,7 +135,7 @@ const Admin = () => {
 
       {/* HEADER WITH LOGOUT */}
       <div className="flex justify-between items-center mb-6">
-        <h2 className="text-3xl font-bold text-[var(--text-main)]">
+        <h2 className="text-3xl font-bold text-(--text-main)">
           {editId ? "Edit Project ✏️" : "Admin Dashboard 🛠️"}
         </h2>
         <button 

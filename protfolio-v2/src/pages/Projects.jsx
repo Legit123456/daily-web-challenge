@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { API_BASE_URL } from "../config";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import RevealOnScroll from "../components/RevealOnScroll";
@@ -67,7 +68,7 @@ const Projects = () => {
   useEffect(() => {
     const fetchProjects = async () => {
       try {
-        const { data } = await axios.get("http://localhost:5000/api/projects");
+        const { data } = await axios.get(`${API_BASE_URL}/api/projects`);
         setProjects(data);
       } catch (error) {
         console.error("Error fetching projects:", error);
