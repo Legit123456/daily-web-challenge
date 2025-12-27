@@ -6,6 +6,7 @@ import projectRoutes from './routes/projectRoutes.js';
 import userRoutes from './routes/userRoutes.js';
 import messageRoutes from './routes/messageRoutes.js';
 import subscriberRoutes from './routes/subscriberRoutes.js';
+import blogRoutes from './routes/blogRoutes.js';
 
 // 1. Initialize Configuration
 dotenv.config();
@@ -41,6 +42,7 @@ app.use('/api/projects', projectRoutes);
 app.use('/api/users', userRoutes);
 app.use('/api/messages', messageRoutes); 
 app.use('/api/subscribe', subscriberRoutes);
+app.use('/api/blogs', blogRoutes);
 
 // Express 5 Feature: Native 404 Handler (No extra packages needed)
 app.use((req, res) => {

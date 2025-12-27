@@ -50,6 +50,13 @@ const Header = () => {
           Projects
         </Link>
 
+        <Link 
+          to="/blog" 
+          className="text-(--text-main) hover:text-(--brand-green) transition-colors font-medium"
+        >
+          Blog
+        </Link>
+
         <button
           id="theme-toggle"
           onClick={cycleTheme}
