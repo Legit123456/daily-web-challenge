@@ -43,7 +43,10 @@ const Admin = () => {
 
   const fetchProjects = async () => {
     try {
-      const { data } = await axios.get(`${API_BASE_URL}/api/projects`);
+      const { data } = await axios.get(
+        `${API_BASE_URL}/api/projects`, 
+        getAuthHeaders() 
+      );
       setProjects(data);
     } catch (error) {
       console.error("Error fetching projects:", error);
