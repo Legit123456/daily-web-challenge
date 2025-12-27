@@ -43,7 +43,7 @@ const Contact = () => {
         <div><label htmlFor="name" className={labelClass}>Name</label><input onChange={handleChange} type="text" name="name" id="name" value={formData.name} required className={inputClass} placeholder="Your Name" /></div>
         <div><label htmlFor="email" className={labelClass}>Email</label><input onChange={handleChange} name="email" value={formData.email} type="email" id="email" required className={inputClass} placeholder="your@email.com" /></div>
         <div><label htmlFor="message" className={labelClass}>Message</label><textarea onChange={handleChange} name="message" id="message" value={formData.message} rows="5" required className={inputClass} placeholder="How can I help you?"></textarea></div>
-        <button id="send-btn" type="submit" disabled={isSubmitting} className="w-full py-4 mt-2 rounded-xl font-bold text-black bg-gradient-to-r from-(--brand-green)] to-green-600 hover:scale-[1.02] hover:shadow-lg transition-all transform">{isSubmitting ? "Sending..." : "Send Message"}</button>
+        <button id="send-btn" type="submit" disabled={isSubmitting} className="w-full py-4 mt-2 rounded-xl font-bold text-black bg-gradient-to-r from-(--brand-green) to-green-600 hover:scale-[1.02] hover:shadow-lg transition-all transform">{isSubmitting ? "Sending..." : "Send Message"}</button>
       </form>
     </RevealOnScroll>
   );
