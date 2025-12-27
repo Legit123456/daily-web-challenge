@@ -3,13 +3,14 @@ import Project from '../models/Project.js';
 import { protect } from '../middleware/authMiddleware.js';
 import upload from '../config/cloudinary.js';
 import { v2 as cloudinary } from 'cloudinary'; // Import cloudinary directly for deletion
+import { trackVisit } from '../middleware/trackVisit.js';
 
 const router = express.Router();
 
 // 1. GET ALL (Public) - STAY THE SAME
-router.get('/', async (req, res) => {
+router.get('/', trackVisit, async (req, res) => { 
   try {
-    const projects = await Project.find({}).sort({ createdAt: -1 }); // Sort newest first
+    const projects = await Project.find({}).sort({ createdAt: -1 });
     res.json(projects);
   } catch (error) {
     res.status(500).json({ message: 'Server Error' });

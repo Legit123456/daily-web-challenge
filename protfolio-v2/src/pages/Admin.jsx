@@ -10,6 +10,11 @@ const Admin = () => {
   const [projects, setProjects] = useState([]);
   const [loading, setLoading] = useState(false);
   const [editId, setEditId] = useState(null);
+  const [stats, setStats] = useState({ 
+    totalVisits: 0, 
+    recentVisits: [], 
+    deviceStats: [] 
+  });
   
   const [form, setForm] = useState({
     title: "",
@@ -27,6 +32,15 @@ const Admin = () => {
     navigate("/login");
   };
 
+  const fetchStats = async () => {
+    try {
+      const { data } = await axios.get(`${API_BASE_URL}/api/users/analytics`, getAuthHeaders());
+      setStats(data);
+    } catch (error) {
+      console.error("Error fetching stats:", error);
+    }
+  };
+
   const fetchProjects = async () => {
     try {
       const { data } = await axios.get(`${API_BASE_URL}/api/projects`);
@@ -38,6 +52,7 @@ const Admin = () => {
 
   useEffect(() => {
     fetchProjects();
+    fetchStats();
   }, []);
 
   const handleChange = (e) => {
@@ -155,6 +170,59 @@ const Admin = () => {
         <button onClick={handleLogout} className="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-lg font-bold transition-colors">
           Logout ✌️
         </button>
+      </div>
+
+      {/* --- ANALYTICS DASHBOARD --- */}
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
+        
+        {/* Card 1: Total Traffic */}
+        <div className="p-6 bg-(--surface-glass) rounded-lg border border-(--glass-border) flex flex-col items-center justify-center hover:scale-[1.02] transition-transform">
+          <h3 className="text-(--text-muted) text-sm uppercase tracking-wider mb-2">Total Visits</h3>
+          <p className="text-5xl font-bold text-(--brand-green)">{stats.totalVisits}</p>
+          <p className="text-xs text-(--text-muted) mt-2">All-time unique page loads</p>
+        </div>
+
+        {/* Card 2: Device Intelligence */}
+        <div className="p-6 bg-(--surface-glass) rounded-lg border border-(--glass-border)">
+          <h3 className="text-(--text-muted) text-sm uppercase tracking-wider mb-4">Device Breakdown</h3>
+          <div className="flex flex-col gap-3">
+            {stats.deviceStats.map((stat) => (
+              <div key={stat._id} className="flex items-center justify-between">
+                <span className="text-(--text-main) font-bold">{stat._id || "Unknown"}</span>
+                <div className="flex items-center gap-2">
+                  <div className="h-2 w-24 bg-gray-700 rounded-full overflow-hidden">
+                    <div 
+                      className="h-full bg-(--brand-green)" 
+                      style={{ width: `${(stat.count / stats.totalVisits) * 100}%` }}
+                    ></div>
+                  </div>
+                  <span className="text-sm text-(--text-muted)">{stat.count}</span>
+                </div>
+              </div>
+            ))}
+            {stats.deviceStats.length === 0 && <p className="text-sm text-(--text-muted) italic">No data yet</p>}
+          </div>
+        </div>
+
+        {/* Card 3: Live Feed (Last 5) */}
+        <div className="p-6 bg-(--surface-glass) rounded-lg border border-(--glass-border) overflow-hidden">
+          <h3 className="text-(--text-muted) text-sm uppercase tracking-wider mb-4">Recent Spies</h3>
+          <div className="flex flex-col gap-3 text-sm">
+            {stats.recentVisits.map((visit, index) => (
+              <div key={index} className="flex justify-between items-center border-b border-(--glass-border) pb-2 last:border-0">
+                <div>
+                  <span className="block text-(--text-main) font-bold">{visit.browser}</span>
+                  <span className="text-xs text-(--text-muted)">{visit.os}</span>
+                </div>
+                <span className="text-xs text-(--brand-green)">
+                  {new Date(visit.timestamp).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}
+                </span>
+              </div>
+            ))}
+            {stats.recentVisits.length === 0 && <p className="text-sm text-(--text-muted) italic">No recent visits</p>}
+          </div>
+        </div>
+
       </div>
       
       <RevealOnScroll className="glass mb-10 p-6">
