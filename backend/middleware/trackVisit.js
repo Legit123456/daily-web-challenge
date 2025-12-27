@@ -2,6 +2,11 @@ import Visit from '../models/Visit.js';
 import useragent from 'express-useragent';
 
 export const trackVisit = async (req, res, next) => {
+
+    if (req.headers.authorization || req.headers.Authorization) {
+        return next();
+    }
+
   try {
     // 1. Parse the incoming request source
     const source = req.headers['user-agent'];

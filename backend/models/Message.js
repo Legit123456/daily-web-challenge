@@ -1,25 +1,11 @@
 import mongoose from 'mongoose';
 
-const messageSchema = new mongoose.Schema(
-  {
-    name: {
-      type: String,
-      required: true,
-    },
-    email: {
-      type: String,
-      required: true,
-      match: [/.+\@.+\..+/, 'Please fill a valid email address'], // Regex validation
-    },
-    message: {
-      type: String,
-      required: true,
-    },
-  },
-  {
-    timestamps: true,
-  }
-);
+const messageSchema = mongoose.Schema({
+  name: { type: String, required: true },
+  email: { type: String, required: true },
+  message: { type: String, required: true },
+  read: { type: Boolean, default: false }, // So you know if you've checked it
+}, { timestamps: true });
 
 const Message = mongoose.model('Message', messageSchema);
 
