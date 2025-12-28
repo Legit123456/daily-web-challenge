@@ -5,10 +5,33 @@ import { toast } from "react-toastify";
 import RevealOnScroll from "../components/RevealOnScroll";
 import { useNavigate } from "react-router-dom";
 import ReactMarkdown from "react-markdown";
+import MarkdownToolbar from '../components/MarkdownToolbar';
 
 const AdminPanel = () => {
   const navigate = useNavigate();
   const [activeTab, setActiveTab] = useState("projects");
+
+  // Helper to insert markdown at cursor position
+    const handleFormatInsert = (formatString) => {
+        const textarea = document.getElementById('blog-content-area');
+        if (!textarea) return;
+
+        const start = textarea.selectionStart;
+        const end = textarea.selectionEnd;
+        const text = blogForm.content;
+        const before = text.substring(0, start);
+        const after = text.substring(end, text.length);
+
+        // Smart insert: if text is selected, wrap it. If not, insert placeholder.
+        // Example: **selected** vs **bold**
+
+        const newText = before + formatString + after;
+
+        setBlogForm({ ...blogForm, content: newText });
+
+        // Return focus to textarea (optional refinement)
+        setTimeout(() => textarea.focus(), 0);
+    };
 
   const getAuthHeaders = () => {
     const userInfo = JSON.parse(localStorage.getItem("userInfo"));
@@ -420,24 +443,34 @@ const AdminPanel = () => {
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-4">
-                <textarea
-                  placeholder="Write your content in Markdown here... (# Title, **bold**, - list)"
-                  value={blogForm.content}
-                  onChange={(e) =>
-                    setBlogForm({ ...blogForm, content: e.target.value })
-                  }
-                  className={`${inputClass} h-64 font-mono text-sm`}
-                  required
-                />
-                <div className="h-64 overflow-y-auto p-4 bg-gray-900 rounded-lg border border-gray-700 prose prose-invert prose-sm">
-                  <p className="text-xs text-gray-500 mb-2 uppercase">
-                    Live Preview:
-                  </p>
-                  <ReactMarkdown>
-                    {blogForm.content || "*Preview will appear here...*"}
-                  </ReactMarkdown>
+
+                {/* Left Column: Editor */}
+                <div>
+                    <label className="block text-(--text-muted) text-sm mb-2">Content</label>
+
+                    {/* 1. The Toolbar */}
+                    <MarkdownToolbar insertText={handleFormatInsert} />
+
+                    {/* 2. The Textarea */}
+                    <textarea 
+                        id="blog-content-area" // <--- CRITICAL for the helper function
+                        placeholder="Write your masterpiece..." 
+                        value={blogForm.content} 
+                        onChange={e => setBlogForm({...blogForm, content: e.target.value})} 
+                        className={`${inputClass} h-64 font-mono text-sm rounded-t-none mt-0`} 
+                        required 
+                    />
                 </div>
-              </div>
+
+                {/* Right Column: Live Preview */}
+                <div className="h-full">
+                    <label className="block text-(--text-muted) text-sm mb-2">Preview</label>
+                    <div className="h-[340px] overflow-y-auto p-4 bg-gray-900 rounded-lg border border-gray-700 prose prose-invert prose-sm">
+                        <ReactMarkdown>{blogForm.content || "*Preview will appear here...*"}</ReactMarkdown>
+                    </div>
+                </div>
+
+               </div>
 
               <input
                 type="file"
