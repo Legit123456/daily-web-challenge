@@ -91,6 +91,7 @@ const AdminPanel = () => {
 
         const projRes = await axios.get(
           `${API_BASE_URL}/api/projects`,
+          `${API_BASE_URL}/api/blogs`,
           authConfig
         );
         setProjects(projRes.data);
