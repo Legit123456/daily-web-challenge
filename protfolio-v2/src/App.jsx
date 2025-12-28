@@ -4,19 +4,18 @@ import LoadingSpinner from "./components/LoadingSpinner";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
-import Home from "./pages/Home";       // Import Page
+import Home from "./pages/Home"; // Import Page
 import Projects from "./pages/Projects"; // Import Page
 import { loadTheme, applyTheme } from "./components/utils/theme";
-import { ToastContainer, toast } from 'react-toastify';
+import { ToastContainer, toast } from "react-toastify";
 import "./index.css";
-import Admin from "./pages/Admin";
 import Login from "./pages/Login";
-import ProtectedRoute from "./components/ProtectedRoute";
 import Blog from "./pages/Blog";
 import BlogPost from "./pages/BlogPost";
+import ProtectedRoute from "./components/ProtectedRoute";
+import AdminPanel from "./private/AdminPanel";
 
 function App() {
-
   const [globalLoading, setGlobalLoading] = useState(false);
 
   useEffect(() => {
@@ -27,7 +26,6 @@ function App() {
   return (
     // 2. WRAP EVERYTHING IN BROWSER ROUTER
     <BrowserRouter>
-
       {/* Show the spinner whenever globalLoading is true */}
       {globalLoading && <LoadingSpinner />}
 
@@ -46,11 +44,14 @@ function App() {
             <Route path="/projects" element={<Projects />} />
             <Route path="/blog" element={<Blog />} />
             <Route path="/blog/:slug" element={<BlogPost />} />
-            <Route path="/admin" element={
-              <ProtectedRoute>
-                <Admin />
-              </ProtectedRoute>
-            } />
+            <Route
+              path="/admin"
+              element={
+                <ProtectedRoute>
+                  <AdminPanel />
+                </ProtectedRoute>
+              }
+            />
             <Route path="/login" element={<Login />} />
           </Routes>
         </main>

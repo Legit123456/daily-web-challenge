@@ -12,7 +12,8 @@ const Header = () => {
   }, [theme]);
 
   function cycleTheme() {
-    const next = theme === "light" ? "dark" : theme === "dark" ? "amoled" : "light";
+    const next =
+      theme === "light" ? "dark" : theme === "dark" ? "amoled" : "light";
     setTheme(next);
     saveTheme(next);
   }
@@ -20,7 +21,6 @@ const Header = () => {
   return (
     // FIX: Using 'items-start' on mobile to match original left-align
     <header className="container site-header glass reveal visible flex flex-col md:flex-row justify-between items-start md:items-center gap-6 mt-0 rounded-t-none!">
-      
       {/* Brand Section */}
       <Link to="/" className="flex flex-row items-center gap-3.5 no-underline">
         <img
@@ -41,18 +41,24 @@ const Header = () => {
 
       {/* Actions Section */}
       {/* FIX: w-full and justify-between on mobile to match original */}
-      <div className="header-actions flex w-full md:w-auto justify-between md:justify-start items-center gap-3 reveal visible">
+      <nav className="header-actions flex w-full md:w-auto justify-end md:justify-start items-center gap-3 reveal visible">
+        <Link
+          to="/"
+          className="text-(--text-main) font-bold hover:text-(--brand-green) transition-colors border border-(--glass-border) rounded px-3 py-2"
+        >
+          Home
+        </Link>
 
-        <Link 
+        <Link
           to="/projects"
-          className="text-(--text-main) font-bold hover:text-(--brand-green) transition-colors border rounded py-1 px-3 border-(--brang-green)"
+          className="text-(--text-main) font-medium hover:text-(--brand-green) transition-colors border border-(--glass-border) rounded px-3 py-2"
         >
           Projects
         </Link>
 
-        <Link 
-          to="/blog" 
-          className="text-(--text-main) hover:text-(--brand-green) transition-colors font-medium"
+        <Link
+          to="/blog"
+          className="text-(--text-main) font-medium hover:text-(--brand-green) transition-colors border border-(--glass-border) rounded px-3 py-2"
         >
           Blog
         </Link>
@@ -62,7 +68,11 @@ const Header = () => {
           onClick={cycleTheme}
           className="px-3 py-2 text-sm md:text-base rounded-lg border border-(--glass-border) text-(--text-main) hover:bg-(--surface-glass) transition-colors cursor-pointer"
         >
-          {theme === "light" ? "☀️ Light" : theme === "amoled" ? "⚫ AMOLED" : "🌙 Dark"}
+          {theme === "light"
+            ? "☀️ Light"
+            : theme === "amoled"
+            ? "⚫ AMOLED"
+            : "🌙 Dark"}
         </button>
 
         <a
@@ -72,7 +82,7 @@ const Header = () => {
         >
           Download CV
         </a>
-      </div>
+      </nav>
     </header>
   );
 };
