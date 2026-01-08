@@ -3,7 +3,7 @@ import { SOCIALS } from "../data"; // Import Data
 
 const Social = () => {
   return (
-    <section className="glass reveal visible p-6 mt-6">
+    <section className="glass reveal visible p-6">
       <h2 className="text-2xl font-bold mb-4 text-(--text-main)">Connect</h2>
 
       <div className="flex gap-4 flex-wrap items-center">
